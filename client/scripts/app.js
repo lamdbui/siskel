@@ -16,6 +16,9 @@ var Movies = Backbone.Collection.extend({
 
   initialize: function() {
     // your code here
+    this.on('change:like', function(e) {
+      this.sort(this.comparator);
+    }, this);
   },
 
   comparator: 'title',
@@ -23,6 +26,7 @@ var Movies = Backbone.Collection.extend({
   sortByField: function(field) {
     // your code here
     this.comparator = field;
+    this.sort(this.comparator);
   }
 
 });
